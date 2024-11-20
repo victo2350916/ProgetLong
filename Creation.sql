@@ -28,12 +28,30 @@ CREATE TABLE commande_attente(
     FOREIGN KEY (commande_id) REFERENCES commandes(id)
 );
 
+# Création de la table croutes
+CREATE TABLE croutes(
+	id INT AUTO_INCREMENT,
+    type VARCHAR(50),
+    PRIMARY KEY (id)
+);
+
+# Création de la table sauces
+CREATE TABLE sauces(
+	id INT AUTO_INCREMENT,
+    type VARCHAR(50),
+    PRIMARY KEY (id)
+);
+
 # Création de la table pizza
 CREATE TABLE pizza(
 	id INT AUTO_INCREMENT,
     commande_id INT,
+    croute_id INT,
+    sauce_id INT,
     PRIMARY KEY (id),
-    FOREIGN KEY (commande_id) REFERENCES commandes(id)
+    FOREIGN KEY (commande_id) REFERENCES commandes(id),
+    FOREIGN KEY (croute_id) REFERENCES croutes(id),
+    FOREIGN KEY (sauce_id) REFERENCES sauces(id)
 );
 
 # Création de la table garnitures
@@ -45,43 +63,12 @@ CREATE TABLE garnitures(
 
 # Création de la table pizza garniture
 CREATE TABLE pizza_garniture(
+	id INT AUTO_INCREMENT,
 	pizza_id INT,
     garniture_id INT,
-	PRIMARY KEY (pizza_id, garniture_id),
+	PRIMARY KEY (id),
     FOREIGN KEY (pizza_id) REFERENCES pizza(id),
     FOREIGN KEY (garniture_id) REFERENCES garnitures(id)
-);
-
-# Création de la table croutes
-CREATE TABLE croutes(
-	id INT AUTO_INCREMENT,
-    type VARCHAR(50),
-    PRIMARY KEY (id)
-);
-
-# Création de la table pizza_croute
-CREATE TABLE pizza_croute(
-	pizza_id INT,
-    croute_id INT,
-	PRIMARY KEY (pizza_id, croute_id),
-    FOREIGN KEY (pizza_id) REFERENCES pizza(id),
-    FOREIGN KEY (croute_id) REFERENCES croutes(id)
-);
-
-# Création de la table sauces
-CREATE TABLE sauces(
-	id INT AUTO_INCREMENT,
-    type VARCHAR(50),
-    PRIMARY KEY (id)
-);
-
-# Création de la table pizza_sauce
-CREATE TABLE pizza_sauce(
-	pizza_id INT,
-    sauce_id INT,
-    PRIMARY KEY (pizza_id, sauce_id),
-    FOREIGN KEY (pizza_id) REFERENCES pizza(id),
-    FOREIGN KEY (sauce_id) REFERENCES sauces(id)
 );
 
 # Création du déclencheur pour les commandes en attente

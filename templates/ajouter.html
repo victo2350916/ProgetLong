@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ajouter</h1>
+    <form action="/retour_commande" method="post">
+        <h3>Client</h3>
+
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom">
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" name="adresse">
+
+        <label for="telephone">Numéro de téléphone :</label>
+        <input type="text" name="telephone">
+
+        <h3>Pizza</h3>
+
+        <label for="sauce">Sauce :</label>
+        <select name="sauce" id="sauce">
+            {% for sauce in sauces %}
+                <option value="{{sauce[0]}}">{{sauce[1]}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="croute">Croute :</label>
+        <select name="croute" id="croute">
+            {% for croute in croutes %}
+                <option value="{{croute[0]}}">{{croute[1]}}</option>
+            {% endfor %}
+        </select>
+
+        
+        <label for="garniture1">garniture#1 :</label>
+        <select name="garniture1" id="garniture1">
+            {% for garniture in garnitures %}
+                <option value="{{garniture[0]}}">{{garniture[1]}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="garniture2">garniture#2 :</label>
+        <select name="garniture2" id="garniture2">
+            {% for garniture in garnitures %}
+                <option value="{{garniture[0]}}">{{garniture[1]}}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="garniture3">garniture#3 :</label>
+        <select name="garniture3" id="garniture3">
+            {% for garniture in garnitures %}
+                <option value="{{garniture[0]}}">{{garniture[1]}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="garniture4">garniture#4 :</label>
+        <select name="garniture4" id="garniture4">
+            {% for garniture in garnitures %}
+                <option value="{{garniture[0]}}">{{garniture[1]}}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit">
+    </form>
+</body>
+</html>
